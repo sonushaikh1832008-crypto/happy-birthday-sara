@@ -162,7 +162,7 @@ Stay kind, stay smiling, stay blessed always.
     let datatxtletter = "✨ Happy Birthday, Sara Sister — may your life be filled with endless happiness, success, and beautiful moments. 🎉💐
 
     ";
-    let titleLetter = "To you";
+         let titleLetter = "To you";
     let charArrDate = datetxt.split('');
     let charArrDateLetter = datatxtletter.split('');
     let charArrTitle = titleLetter.split('');
@@ -175,7 +175,8 @@ Stay kind, stay smiling, stay blessed always.
         timeDatetxt = setInterval(function () {
             if (currentIndex < charArrDate.length) {
                 date__of__birth.textContent += charArrDate[currentIndex];
-                current 
+                currentIndex++;
+            }
             else {
                 let i = document.createElement("i");
                 i.className = "fa-solid fa-star"
