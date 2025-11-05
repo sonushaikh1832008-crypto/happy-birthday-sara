@@ -7,19 +7,17 @@
     <meta name="title" content="Happy Birthday Website">
     <title>Sara's Birthday</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Poppins:wght@400;600&display=swap"
-        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 
 <body>
     <div id="wrapper">
+
         <div class="flag__birthday">
-            <img src="./images/1.png" alt="" width="350" class="flag__left">
-            <img src="./images/1.png" alt="" width="350" class="flag__right">
+            <img src="./images/1.png" width="350" class="flag__left">
+            <img src="./images/1.png" width="350" class="flag__right">
         </div>
 
         <div class="content">
@@ -56,7 +54,7 @@
                 <div class="btn">
                     <button id="btn__letter">
                         <div class="mail">
-                            Click Here Sister 😊 
+                            Click Here Sister 😊
                             <i class="fa-regular fa-envelope"></i>
                         </div>
                     </button>
@@ -66,7 +64,7 @@
             <div class="right">
                 <div class="box__account">
                     <div class="image">
-                        <img src="./images/unnamed.png">
+                        <img src="./images/unnamed.png" alt="">
                     </div>
                     <div class="name">
                         <i class="fa-solid fa-heart"></i>
@@ -77,6 +75,7 @@
                     <div class="balloon_one">
                         <img src="./images/balloon1.png" width="100">
                     </div>
+
                     <div class="balloon_two">
                         <img src="./images/balloon2.png" width="100">
                     </div>
@@ -84,26 +83,10 @@
             </div>
         </div>
 
-        <!-- ✅ LETTER POPUP (this was missing) -->
-        <div class="box__letter">
-            <div class="letter__border"></div>
-
-            <h2 class="title__letter"></h2>
-            <img id="heart__letter" src="./images/heart.png" class="heart">
-
-            <img class="love__img" src="./images/love.png">
-            <img id="mewmew" src="./images/mew.png">
-
-            <div class="text__letter">
-                <p></p>
-            </div>
-
-            <button class="close">Close</button>
-        </div>
-
-        <!-- ✅ Mail Box Popup -->
+        <!-- Mail Box -->
         <div class="boxMail">
             <i class="fa-solid fa-xmark"></i>
+
             <div class="boxMail-container">
                 <div class="card1">
                     <div class="userImg">
@@ -111,6 +94,7 @@
                     </div>
                     <h4 class="username">To: Sara sis 💖</h4>
                     <h3>Happy Birthday</h3>
+
                     <div class="imageCute">
                         <img src="cute1.png">
                     </div>
@@ -119,13 +103,19 @@
                 <div class="card2">
                     <div class="card2-content">
                         <h3>To You!</h3>
-                        <h2>🎀 Happy Birthday, Sara Sister! 🎀
-                        <br>May your day be full of smiles, love, and beautiful surprises. ✨💐🎉
+                        <h2>🎀 Happy Birthday, Sara Sister! 🎀<br>
+                            May your day be filled with smiles, love, peace and beautiful surprises.✨💐🎉
                         </h2>
+
                         <div class="imageCute2">
                             <img src="cute2.png">
                         </div>
                     </div>
+                </div>
+
+                <!-- ✅ Missing text element added -->
+                <div class="text__letter">
+                    <p></p>
                 </div>
             </div>
         </div>
@@ -141,103 +131,50 @@
 
     let charArrDate = datetxt.split('');
     let charArrDateLetter = datatxtletter.split('');
-    let charArrTitle = titleLetter.split('');
 
     let currentIndex = 0;
     let currentIndexLetter = 0;
-    let currentIndexTitle = 0;
 
     let date__of__birth = document.querySelector(".date__of__birth span");
     let text__letter = document.querySelector(".text__letter p");
 
+    // ✅ Date Auto typing
     setTimeout(function () {
         let timeDatetxt = setInterval(function () {
             if (currentIndex < charArrDate.length) {
                 date__of__birth.textContent += charArrDate[currentIndex];
                 currentIndex++;
             } else {
-                let i = document.createElement("i");
-                i.className = "fa-solid fa-star"
-                document.querySelector(".date__of__birth").prepend(i)
-                document.querySelector(".date__of__birth").appendChild(i.cloneNode(true))
+                let star = document.createElement("i");
+                star.className = "fa-solid fa-star"
+                document.querySelector(".date__of__birth").prepend(star)
+                document.querySelector(".date__of__birth").appendChild(star.cloneNode(true))
                 clearInterval(timeDatetxt)
             }
         }, 100)
-    }, 1200)
+    }, 1000);
 
-    var intervalContent;
-    var intervalTitle;
-
-    $("#btn__letter").on("click", function () {
-        $(".box__letter").slideDown()
-        setTimeout(function () {
-            $(".letter__border").slideDown();
-        }, 1000)
-
-        setTimeout(function () {
-            intervalTitle = setInterval(function () {
-                if (currentIndexTitle < charArrTitle.length) {
-                    document.querySelector(".title__letter").textContent += charArrTitle[currentIndexTitle];
-                    let i = document.createElement("i");
-                    i.className = "fa-solid fa-heart"
-                    document.querySelector(".title__letter").appendChild(i)
-                    currentIndexTitle++;
-                } else {
-                    clearInterval(intervalTitle)
-                }
-            }, 100)
-        }, 2000)
-
-        setTimeout(function () {
-            document.querySelector("#heart__letter").classList.add("animationOp");
-            document.querySelector(".love__img").classList.add("animationOp");
-            document.querySelector("#mewmew").classList.add("animationOp");
-        }, 2800)
-
-        setTimeout(function () {
-            document.querySelectorAll(".heart").forEach((item) => {
-                item.classList.add("animation")
-            })
-        }, 3500)
-
-        setTimeout(function () {
-            intervalContent = setInterval(function () {
-                if (currentIndexLetter < charArrDateLetter.length) {
-                    text__letter.textContent += charArrDateLetter[currentIndexLetter];
-                    currentIndexLetter++;
-                } else {
-                    clearInterval(intervalContent)
-                }
-            }, 50)
-        }, 6000)
-    })
-
-    $(".close").on("click", function () {
-        clearInterval(intervalContent)
-        document.querySelector(".title__letter").textContent = "";
-        text__letter.textContent = "";
-        currentIndexLetter = 0
-        currentIndexTitle = 0
-        document.querySelector("#heart__letter").classList.remove("animationOp");
-        document.querySelector(".love__img").classList.remove("animationOp");
-        document.querySelector("#mewmew").classList.remove("animationOp");
-        document.querySelectorAll(".heart").forEach((item) => {
-            item.classList.remove("animation")
-        })
-        $(".box__letter").slideUp();
-        $(".letter__border").slideUp();
-    })
-
+    // ✅ Mail Popup + auto typing letter
     let mailBox = document.querySelector('.mail')
     let boxmail = document.querySelector('.boxMail')
-    var close = document.querySelector('.fa-xmark')
+    let closeBtn = document.querySelector('.fa-xmark')
 
     mailBox.onclick = function () {
-        mailBox.classList.toggle('active')
         boxmail.classList.add('active')
+        text__letter.textContent = "";
+        currentIndexLetter = 0;
+
+        let intervalContent = setInterval(function () {
+            if (currentIndexLetter < charArrDateLetter.length) {
+                text__letter.textContent += charArrDateLetter[currentIndexLetter];
+                currentIndexLetter++;
+            } else {
+                clearInterval(intervalContent)
+            }
+        }, 50)
     }
 
-    close.addEventListener('click', function () {
+    closeBtn.addEventListener('click', function () {
         boxmail.classList.remove('active')
     })
 </script>
